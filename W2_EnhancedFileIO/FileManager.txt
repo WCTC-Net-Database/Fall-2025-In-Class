@@ -1,0 +1,48 @@
+﻿namespace W2_EnhancedFileIO
+{
+    // CRUD: Create, Read, Update, Delete
+    public class FileManager
+    {
+        private string _fileName = "input.csv";
+
+        // Option 2
+        public int HitPoints { get; set; }
+
+        // Option 1
+        //private int hitPoints;
+
+        //public int HitPoints
+        //{
+        //    get { return hitPoints; }
+        //    set { hitPoints = value; }
+        //}
+
+        // Option 0
+        //public int GetHitPoints()
+        //{
+        //    return hitPoints;
+        //}
+        //public void SetHitPoints(int hp)
+        //{
+        //    hitPoints = hp;
+        //}
+
+
+        // default constructor
+        public FileManager()
+        {
+            Console.WriteLine("Entering default constructor");
+        }
+
+        public FileManager(string filename)
+        {
+            Console.WriteLine("Entering parameterized constructor");
+            Console.WriteLine($"Filename : {filename}");
+        }
+
+        public void ReadFile()
+        {
+            _fileName
+        }
+    }
+}
