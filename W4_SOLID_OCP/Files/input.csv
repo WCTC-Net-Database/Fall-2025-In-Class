@@ -1,0 +1,4 @@
+﻿Name,Class,Level,HP,Equipment
+"John, Brave",Fighter,1,10,sword|shield|potion
+"Bob, Sneaky",Rogue,3,8,dagger|lockpick|cloak
+"Reginald III, Sir",Knight,5,20,sword|armor|horse
