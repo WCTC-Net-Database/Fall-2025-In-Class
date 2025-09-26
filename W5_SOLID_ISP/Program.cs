@@ -39,6 +39,10 @@ public class Program
             openableChest1.Open();
         }
 
+        PickableChest pickableChest2 = new PickableChest(keyId: 2, isLocked: false);
+        pickableChest2.Lock();
+        pickableChest2.Pick();
+
     }
 }
 
