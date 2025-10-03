@@ -24,6 +24,24 @@ public class Program
         var program = serviceProvider.GetService<Program>();
         program?.Run();
 
+        Console.WriteLine("Enter a number");
+        int? value1 = Convert.ToInt32(Console.ReadLine() ?? null);
+        Console.WriteLine("Enter another number");
+        int? value2 = Convert.ToInt32(Console.ReadLine() ?? null);
+
+        var myStr = value1?.ToString();
+
+        int num1 = int.Parse(value1);
+        var isInt = int.TryParse(value2, out int num2);
+        if (isInt == false)
+        {
+            Console.WriteLine("You did not enter a valid number");
+            return;
+        }
+
+        var answer = num1 + num2;
+        Console.WriteLine($"Your answer is {answer}");
+
         //ICalculate calculate = new Calculate();
         //IMainService service = new MainService(calculate);
 

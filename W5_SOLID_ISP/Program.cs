@@ -102,6 +102,11 @@ public class OpenableChest : IOpenable, IChest
     }
 }
 
+public interface IDamageable
+{
+
+}
+
 public class PickableChest : IPickable, ILockable, IOpenable, IChest
 {
     public int KeyId { get; set; }
