@@ -7,6 +7,6 @@
         public int Level { get; set; }      // number
 
         // navigation property
-        public virtual Room Room { get; set; }      // foreign key
+        public virtual Room? Room { get; set; }      // foreign key
     }
 }
