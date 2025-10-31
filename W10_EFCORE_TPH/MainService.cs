@@ -1,9 +1,10 @@
-﻿using W9_EFCORE_INTRO.Data;
+﻿using W10_EFCORE_TPH.Models;
+using W9_EFCORE_INTRO.Data;
 using W9_EFCORE_INTRO.Models;
 
 namespace W9_EFCORE_INTRO
 {
-    public class MainService : IMainService
+    public class MainService : IMainService, IDisposable
     {
         private readonly GameContext _context;
 
@@ -12,46 +13,54 @@ namespace W9_EFCORE_INTRO
             _context = context;
         }
 
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
+
         public void Execute()
         {
             Console.WriteLine("Entering MainService");
 
-            //var context = new GameContext();
-            _context.Seed();
+            // List the Rooms
+            var rooms = _context.Rooms;
 
-            // Add a new room to the database
-            var newRoom = new Room
+            foreach (var room in rooms)
             {
-                Name = "Dungeon",
-                Description = "A dark, damp dungeon with chains hanging from the walls."
-            };
-            _context.Rooms.Add(newRoom);
+                Console.WriteLine($"Room: {room.Name} - {room.Description}");
+            }
 
-            // Add a new character to the database
-            var newCharacter = new Character
+            // Create some monsters
+            //Monster goblin = new Goblin
+            //{
+            //    Name = "Gobbo",
+            //    HitPoints = 30,
+            //    Gold = 7,
+            //    Attack = 5
+            //};  
+
+            //Monster troll = new Troll
+            //{
+            //    Name = "Trolly",
+            //    HitPoints = 80,
+            //    Defense = 10,
+            //    Regenerate = true
+            //};
+
+            //_context.Monsters.Add(goblin);
+            //_context.Monsters.Add(troll);
+
+            var monsters = _context.Monsters;
+            foreach (var monster in monsters)
             {
-                Name = "Gorak the Fierce",
-                Level = 10
-                //Room = newRoom 
-            };
-            _context.Characters.Add(newCharacter);
+                Console.WriteLine($"Monster: {monster.Name}");
+            }
 
-
-            // Find a character by name
-            var foundCharacter = _context.Characters.FirstOrDefault(character => character.Name.Contains("Aria"));
-            Console.WriteLine($"Found character: {foundCharacter!.Name}, Level: {foundCharacter.Level}");
-
-
-            // Not part of the assignment, but showing how to update
-            // Delete a character by name
-            var characterToDelete = _context.Characters.FirstOrDefault(character => character.Name.Contains("Luna"));
-            _context.Characters.Remove(characterToDelete);
-            Console.WriteLine($"Deleted character: {characterToDelete.Name}");
-
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // !!!! REMEMBER TO SAVE CHANGES !!!! 
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //  SAVE CHANGES TO THE DATABASE
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             _context.SaveChanges();
+
         }
     }
 }

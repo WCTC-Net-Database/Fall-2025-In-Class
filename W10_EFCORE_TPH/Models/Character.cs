@@ -1,4 +1,6 @@
-﻿namespace W9_EFCORE_INTRO.Models
+﻿using Castle.Components.DictionaryAdapter;
+
+namespace W9_EFCORE_INTRO.Models
 {
     public class Character
     {
