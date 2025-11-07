@@ -33,7 +33,7 @@ namespace W9_EFCORE_INTRO.Migrations
 
                     b.HasIndex("ItemsId");
 
-                    b.ToTable("CharacterItem");
+                    b.ToTable("CharacterItem", (string)null);
                 });
 
             modelBuilder.Entity("W11_EFCORE_ABSTRACT.Models.Character", b =>
@@ -63,7 +63,7 @@ namespace W9_EFCORE_INTRO.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Characters");
+                    b.ToTable("Characters", (string)null);
                 });
 
             modelBuilder.Entity("W11_EFCORE_ABSTRACT.Models.Equipment", b =>
@@ -86,7 +86,7 @@ namespace W9_EFCORE_INTRO.Migrations
 
                     b.HasIndex("WeaponId");
 
-                    b.ToTable("Equipments");
+                    b.ToTable("Equipments", (string)null);
                 });
 
             modelBuilder.Entity("W11_EFCORE_ABSTRACT.Models.Item", b =>
@@ -112,7 +112,7 @@ namespace W9_EFCORE_INTRO.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Items");
+                    b.ToTable("Items", (string)null);
 
                     b.HasDiscriminator<string>("ItemType").HasValue("Item");
 
@@ -141,7 +141,7 @@ namespace W9_EFCORE_INTRO.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Monsters");
+                    b.ToTable("Monsters", (string)null);
 
                     b.HasDiscriminator<string>("MonsterType").HasValue("Monster");
 
@@ -166,7 +166,7 @@ namespace W9_EFCORE_INTRO.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Rooms");
+                    b.ToTable("Rooms", (string)null);
                 });
 
             modelBuilder.Entity("W11_EFCORE_ABSTRACT.Models.Armor", b =>

@@ -13,6 +13,18 @@
 
         public virtual Room? Room { get; set; }      // foreign key
 
+        public void ListEquipment()
+        {
+            Console.WriteLine($"{Name}'s Equipment:");
+            if (Equipment != null)
+            {
+                Console.WriteLine($"Equipment: {Equipment}");
+            }
+            else
+            {
+                Console.WriteLine("No equipment.");
+            }
+        }
         public void ListItems()
         {
             Console.WriteLine($"{Name}'s Items:");

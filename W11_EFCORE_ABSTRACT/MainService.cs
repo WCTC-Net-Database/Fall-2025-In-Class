@@ -40,12 +40,22 @@ namespace W11_EFCORE_ABSTRACT
 
             // Find a sword in the Items table
             //var sword = _context.Items.OfType<Weapon>().Where(i => i.Name.Contains("Sword")).FirstOrDefault();
-            var armor = _context.Items.OfType<Armor>().Where(i => i.Name.Contains("Armor")).FirstOrDefault();
+            //var armor = _context.Items.OfType<Armor>().Where(i => i.Name.Contains("Armor")).FirstOrDefault();
             //player.AddItem(sword);
-            player.AddItem(armor);
+            //player.AddItem(armor);
 
+            // allow the player to choose an item they have in their inventory to equip
+            
             player!.ListItems();
+            var sword = player.Items.OfType<Weapon>().First();
 
+            // try to equip the sword
+
+            //player.Equipment.TryEquip(sword);
+
+            //player.Equipment.EquipArmor(sword);
+
+            player.ListEquipment();
 
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             //  SAVE CHANGES TO THE DATABASE
