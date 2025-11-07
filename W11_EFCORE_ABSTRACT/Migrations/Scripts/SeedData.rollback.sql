@@ -1,0 +1,1 @@
+﻿DELETE FROM [dbo].[Monsters] WHERE [Id] IN (1, 2, 3)
