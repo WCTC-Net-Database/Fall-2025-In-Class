@@ -11,6 +11,8 @@ namespace W12_ADV_LINQ
         public MainService(GameContext context)
         {
             _context = context;
+            _context.Database.Migrate();
+            //_context.Database.EnsureCreated();
         }
 
         public void Dispose()
