@@ -7,11 +7,6 @@ namespace W13_ROOM_NAV
     {
         private static void Main(string[] args)
         {
-            SetupRooms();
-        }
-
-        private static void SetupRooms()
-        {
             // Create the rooms
             Room entrance = new Room("Dungeon Entrance", "You are standing in a dark, cold cave entrance. Water drips from the ceiling.");
             Room greatHall = new Room("Great Hall", "A massive stone room with high ceilings. Banners hang tattered on the walls.");
@@ -57,6 +52,61 @@ namespace W13_ROOM_NAV
 
             // Exit links
             exit.South = guardPost;
+
+            var currentRoom = entrance;
+
+            while (true)
+            {
+                if (currentRoom.Name.Equals("Exit", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine("Congratulations! You have found the exit and escaped the dungeon!");
+                    break;
+                }
+
+                // display current room info
+                Console.WriteLine($"\nYou are in the {currentRoom.Name}.");
+                Console.WriteLine(currentRoom.Desc);
+                Console.Write("Exits: ");
+
+                if (currentRoom.North != null) Console.WriteLine("[N]orth");
+                if (currentRoom.South != null) Console.WriteLine("[S]outh");
+                if (currentRoom.East != null) Console.WriteLine("[E]ast");
+                if (currentRoom.West != null) Console.WriteLine("[W]est");
+
+                // solicit user input
+                Console.Write("\nEnter direction (N/S/E/W)");
+                var input = Console.ReadLine().ToLower();
+
+                switch (input)
+                {
+                    case "n":
+                        if (currentRoom.North != null) currentRoom = currentRoom.North;
+                        else InvalidDirection();
+                        break;
+                    case "s":
+                        if (currentRoom.South != null) currentRoom = currentRoom.South;
+                        else InvalidDirection();
+                        break;
+                    case "e":
+                        if (currentRoom.East != null) currentRoom = currentRoom.East;
+                        else InvalidDirection();
+                        break;
+                    case "w":
+                        if (currentRoom.West != null) currentRoom = currentRoom.West;
+                        else InvalidDirection();
+                        break;
+                    default:
+                        Console.WriteLine("Invalid direction. Please enter N, S, E, or W.");
+                        break;
+
+                }
+            }
         }
+
+        private static void InvalidDirection()
+        {
+            Console.WriteLine("You can't go that way.");
+        }
+
     }
 }
