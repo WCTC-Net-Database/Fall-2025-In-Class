@@ -1,0 +1,16 @@
+﻿class Room
+	int Id;
+	string Name;
+	string Description;
+	Room NorthRoom;
+	Room SouthRoom;
+	Room WestRoom;
+	Room EastRoom;
+
+1
+Entryway
+A large entryway to the castle
+NorthRoom -> new Room { 2, Foyer, "Description" }
+SouthRoom -> new Room { 3, Library, "Description" }
+WestRoom -> new Room { 4, Stairs, "Description" }
+EastRoom -> new Room { 5, Secret Room, "Description" }
